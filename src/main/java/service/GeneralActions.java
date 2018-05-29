@@ -7,29 +7,29 @@ import role.Teacher;
 public class GeneralActions<P extends Person> implements Actions<P> {
 
     protected int numberOfInSchool;
-    private static final String DEFAULT_MESSAGE = "";
+    private static final String DEFAULT_MESSAGE = "Not used";
 
-    InnerGreetingClass greet(P person) {
+    String greet(P person, String greetingMsg) {
         InnerGreetingClass innerGreetingClass = new InnerGreetingClass();
         innerGreetingClass.message = "Good morning";
-        innerGreetingClass.formGreeting(person);
-        return innerGreetingClass;
+        return innerGreetingClass.formGreeting(person);
     }
 
     class InnerGreetingClass {
 
         protected String message;
 
-        private void formGreeting(P person) {
+        private String formGreeting(P person) {
             String output = message;
             //TODO: instanceOf looks ugly
             if (person instanceof Teacher) {
                 output = output + " children. I'm " + getFullName(person) +
                         "There are " + numberOfInSchool + " of us.";
-            } else if (person instanceof Student) {
+            } else if (person.getClass().equals(Student.class)) {
                 output = output + " teacher";
             }
             System.out.println(output);
+            return output;
         }
     }
 
