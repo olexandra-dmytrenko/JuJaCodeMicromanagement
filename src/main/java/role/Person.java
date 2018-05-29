@@ -9,11 +9,13 @@ import java.util.Date;
 public class Person {
     public String firstName;
     public String lastName;
-    @Getter
+    @Getter @Setter
     private Date birthday;
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+
 }

@@ -8,15 +8,14 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 
 public class GeneralActions<P extends Person> implements Actions<P> {
 
-    protected int numberOfInSchool;
-    private static final String DEFAULT_MESSAGE = "Not used";
-
     String greet(P person, String greetingMsg) {
         InnerGreetingClass innerGreetingClass = new InnerGreetingClass();
         innerGreetingClass.message = isBlank(greetingMsg) ? "Good morning" : greetingMsg;
         return innerGreetingClass.formGreeting(person);
     }
 
+    protected int numberOfInSchool;
+    private static final String DEFAULT_MESSAGE = "Not used";
     class InnerGreetingClass {
 
         protected String message;
