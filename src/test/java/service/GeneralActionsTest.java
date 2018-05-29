@@ -11,7 +11,7 @@ public class GeneralActionsTest {
     public void testGreet() {
         Teacher teacher = new Teacher("Maria", "Ivanovna");
         GeneralActions<Teacher> actions = new GeneralActions<>();
-        String greet = actions.greet(teacher, "Hi");
-        assertEquals(greet, "Good morning children. I'm Maria IvanovnaThere are 0 of us.");
+        String greet = actions.greet(teacher, null);
+        assertEquals(greet, "Good morning children. I'm Maria Ivanovna. There are 0 of us.");
     }
 }

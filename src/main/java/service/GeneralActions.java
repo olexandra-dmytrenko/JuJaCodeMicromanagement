@@ -4,6 +4,8 @@ import role.Person;
 import role.Student;
 import role.Teacher;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 public class GeneralActions<P extends Person> implements Actions<P> {
 
     protected int numberOfInSchool;
@@ -11,7 +13,7 @@ public class GeneralActions<P extends Person> implements Actions<P> {
 
     String greet(P person, String greetingMsg) {
         InnerGreetingClass innerGreetingClass = new InnerGreetingClass();
-        innerGreetingClass.message = "Good morning";
+        innerGreetingClass.message = isBlank(greetingMsg) ? "Good morning" : greetingMsg;
         return innerGreetingClass.formGreeting(person);
     }
 
@@ -21,10 +23,10 @@ public class GeneralActions<P extends Person> implements Actions<P> {
 
         private String formGreeting(P person) {
             String output = message;
-            //TODO: instanceOf looks ugly
-            if (person instanceof Teacher) {
+            //TODO: instanceOf looks ugly. So I've replaced it with getClass
+            if (person.getClass().equals(Teacher.class)) {
                 output = output + " children. I'm " + getFullName(person) +
-                        "There are " + numberOfInSchool + " of us.";
+                        ". There are " + numberOfInSchool + " of us.";
             } else if (person.getClass().equals(Student.class)) {
                 output = output + " teacher";
             }

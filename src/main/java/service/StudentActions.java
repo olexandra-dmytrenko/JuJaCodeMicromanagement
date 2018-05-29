@@ -4,9 +4,7 @@ import role.Student;
 
 public class StudentActions extends GeneralActions<Student> implements IStudentActions {
 
-    @Override
-    public String greet(Student s, String greetingMsg){
-        //TODO: causes error, greet recurses instantly
+    public String greet(Student s){
         return super.greet(s, "Hi");
     }
 }
