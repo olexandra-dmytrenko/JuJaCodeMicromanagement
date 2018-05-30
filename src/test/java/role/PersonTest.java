@@ -22,4 +22,12 @@ public class PersonTest {
 
         assertEquals(person.getBirthday().getTime(), 1L);
     }
+
+    @Test
+    void testImmutableString(){
+        String a = "123";
+        String b = a.substring(1);
+        assertEquals(a, "123");
+        assertEquals(b, "23");
+    }
 }
